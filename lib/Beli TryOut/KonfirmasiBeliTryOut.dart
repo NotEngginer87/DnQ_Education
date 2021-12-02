@@ -34,6 +34,16 @@ class KonfirmasiBeliTO extends StatefulWidget {
 class _KonfirmasiBeliTOState extends State<KonfirmasiBeliTO> {
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle ButtonLebar = ElevatedButton.styleFrom(
+      onPrimary: Colors.white,
+      primary: Color(0xFF5d1a77),
+      elevation: 10,
+      minimumSize: Size(MediaQuery.of(context).size.width * 0.8, 48),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+    );
     return Scaffold(
         appBar: AppBar(
           title: Text('keterangan pembelian Try Out'),
@@ -42,35 +52,47 @@ class _KonfirmasiBeliTOState extends State<KonfirmasiBeliTO> {
           child: Padding(
             padding: EdgeInsets.all(24),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
                   widget.namaTO,
                   style: TextStyle(fontSize: 30),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  widget.keteranganTO,
-                  style: TextStyle(fontSize: 12),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
                   children: [
+
+                    SizedBox(
+                      height: 20,
+                    ),
                     Text(
-                      'Batas Pengerjaan : ' + widget.timeTanggal.toString() + ' - ' + widget.timeBulan.toString() + ' - ' + widget.timeTahun.toString(),
+                      widget.keteranganTO,
                       style: TextStyle(fontSize: 14),
                     ),
-
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Batas Pengerjaan : ' +
+                              widget.timeTanggal.toString() +
+                              ' - ' +
+                              widget.timeBulan.toString() +
+                              ' - ' +
+                              widget.timeTahun.toString(),
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
 
-                ElevatedButton(onPressed: () {}, child: Text('Daftar TryOut')),
-                Text('Apakah Anda Yakin Membeli ' + widget.namaTO + ' '),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Daftar TryOut'),
+                  style: ButtonLebar,
+                ),
               ],
             ),
           ),
