@@ -172,6 +172,9 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                       ? Column(
                           children: [
                             Text('Kalau free, ikuti instruksi berikut : '),
+                            SizedBox(
+                              height: 24,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -191,18 +194,21 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                                     ))
                               ],
                             ),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 SizedBox(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.5,
+                                      MediaQuery.of(context).size.width * 0.5,
                                   child: Text(
                                       'Upload Bukti Screenshoot like dan komen postingan TO : '),
                                 ),
                                 SizedBox(
                                     width:
-                                    MediaQuery.of(context).size.width * 0.3,
+                                        MediaQuery.of(context).size.width * 0.3,
                                     child: ElevatedButton(
                                       onPressed: () {},
                                       child: Text('Upload'),
@@ -210,18 +216,21 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                                     ))
                               ],
                             ),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 SizedBox(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.5,
+                                      MediaQuery.of(context).size.width * 0.5,
                                   child: Text(
                                       'Upload Bukti Follow instagram @DnQEducation : '),
                                 ),
                                 SizedBox(
                                     width:
-                                    MediaQuery.of(context).size.width * 0.3,
+                                        MediaQuery.of(context).size.width * 0.3,
                                     child: ElevatedButton(
                                       onPressed: () {},
                                       child: Text('Upload'),
@@ -234,15 +243,144 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                       : (_selectedIndex == 1)
                           ? Column(
                               children: [
-                                Text(
-                                    'Kalau kamu menggunakan gopay, ikuti instruksi berikut : ')
+
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(24, 12, 24, 12),
+                                  child: Column(
+                                    children: [
+                                      Text('Transfer gopaymu ke nomer berikut : '),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            child: Text('Gopay atas nama : '),
+                                          ),
+                                          SizedBox(child: Text('Daffa')),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            child: Text('Nomor Telepon : '),
+                                          ),
+                                          SizedBox(child: Text('08080808080')),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 24,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(24, 12, 24, 12),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [
+                                      SizedBox(
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width *
+                                            0.5,
+                                        child:
+                                        Text(
+                                            'Upload Bukti Pembayaran Gopaymu '),
+
+                                      ),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                              .size
+                                              .width *
+                                              0.3,
+                                          child: ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text('Upload'),
+                                            style: ButtonLebar,
+                                          ))
+                                    ],
+                                  ),
+                                ),
+
                               ],
                             )
                           : (_selectedIndex == 2)
                               ? Column(
                                   children: [
-                                    Text(
-                                        'Kalau kamu bisanya transfer bank, ikuti instruksi berikut : ')
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(24, 12, 24, 12),
+                                      child: Column(
+                                        children: [
+                                          Text('Transfer ke rekening  : '),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                child: Text('Rekening atas nama : '),
+                                              ),
+                                              SizedBox(child: Text('Daffa')),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                child: Text('Nomor Rekening : '),
+                                              ),
+                                              SizedBox(child: Text('1234567890')),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 24,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(24, 12, 24, 12),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                        children: [
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                                0.5,
+                                            child:
+                                            Text('Upload Bukti Transfermu '),
+                                          ),
+                                          SizedBox(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                                  0.3,
+                                              child: ElevatedButton(
+                                                onPressed: () {},
+                                                child: Text('Upload'),
+                                                style: ButtonLebar,
+                                              ))
+                                        ],
+                                      ),
+                                    ),
+
                                   ],
                                 )
                               : Container(),
