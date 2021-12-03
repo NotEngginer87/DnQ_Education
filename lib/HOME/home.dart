@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:tryout/TryOut/beliTO/PilihBeliTryOut.dart';
+import 'package:tryout/TryOut/beliTO/1PilihBeliTryOut.dart';
 import 'package:tryout/api/AuthServices.dart';
 
 class Home extends StatefulWidget {

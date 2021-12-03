@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tryout/TryOut/beliTO/3UploadPembayaran.dart';
 import 'package:tryout/api/DatabaseServices.dart';
 
 // ignore: must_be_immutable
@@ -100,13 +101,25 @@ class _KonfirmasiBeliTOState extends State<KonfirmasiBeliTO> {
                   onPressed: () {
                     DatabaseServices.updatepembelianTO(widget.emaila.toString(),
                         widget.namaTO, widget.jenis, widget.id);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UploadPembayaran(
+                              widget.id,
+                              widget.jenis,
+                              widget.kode,
+                              widget.linkgambar,
+                              widget.namaTO,
+                              widget.keteranganTO,
+                              widget.timeTanggal,
+                              widget.timeBulan,
+                              widget.timeTahun,
+                              widget.docname,
+                              widget.emaila,)));
                   },
                   child: Text('Daftar TryOut'),
                   style: ButtonLebar,
                 ),
-
-
-
               ],
             ),
           ),

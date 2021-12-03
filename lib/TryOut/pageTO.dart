@@ -1,8 +1,8 @@
 // ignore_for_file: camel_case_types, file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:tryout/TryOut/beliTO/PilihBeliTryOut.dart';
-import 'package:tryout/HOME/daftarTO.dart';
+import 'package:tryout/TryOut/beliTO/1PilihBeliTryOut.dart';
+import 'package:tryout/TryOut/beliTO/0daftarTO.dart';
 
 class tryoutPage extends StatefulWidget {
   const tryoutPage({Key? key}) : super(key: key);
