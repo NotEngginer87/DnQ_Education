@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors, camel_case_types
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -27,6 +28,7 @@ class _BeliTryOutState extends State<BeliTryOut> {
     int timeBulan,
     int timeTahun,
     String docname,
+    emaila,
   ) =>
       Card(
           elevation: 4,
@@ -56,7 +58,8 @@ class _BeliTryOutState extends State<BeliTryOut> {
                               timeTanggal,
                               timeBulan,
                               timeTahun,
-                              docname)));
+                              docname,
+                          emaila,)));
                     }),
                   ),
                   Text(
@@ -68,10 +71,17 @@ class _BeliTryOutState extends State<BeliTryOut> {
             ],
           ));
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference tryoutdata = firestore.collection('TryOut');
+
+    CollectionReference userdata = firestore.collection('user');
+
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final emaila = user!.email;
 
     return Scaffold(
       appBar: AppBar(
@@ -163,6 +173,7 @@ class _BeliTryOutState extends State<BeliTryOut> {
                                                 e.data()['time_bulan'],
                                                 e.data()['time_tahun'],
                                                 e.data()['docname'],
+                                                emaila,
                                               )
                                             : Container())
                                     .toList());
@@ -208,6 +219,7 @@ class _BeliTryOutState extends State<BeliTryOut> {
                                                 e.data()['time_bulan'],
                                                 e.data()['time_tahun'],
                                                 e.data()['docname'],
+                                                emaila,
                                               )
                                             : Container())
                                         .toList());

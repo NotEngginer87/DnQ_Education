@@ -6,6 +6,7 @@ class DatabaseServices {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   static CollectionReference userdata = firestore.collection('user');
+  static CollectionReference userdataTO = firestore.collection('user');
   static CollectionReference count = firestore.collection('count');
   static CollectionReference blog = firestore.collection('soal');
 
@@ -15,6 +16,17 @@ class DatabaseServices {
         'akungoogle': akungoogle,
         'nama': nama,
         'nomorhp': nomorHP,
+      },
+    );
+  }
+
+  static Future<void> updatepembelianTO(String akungoogle, String namaTO, String jenis, int id) async {
+    await userdataTO.doc(akungoogle).collection('dataTO').doc(id.toString()).set(
+      {
+        'namaTO': namaTO,
+        'jenis': jenis,
+        'id': id,
+        'statuspembayaran' : 'belum bayar',
       },
     );
   }

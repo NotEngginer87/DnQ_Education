@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:tryout/Beli%20TryOut/PilihBeliTryOut.dart';
+import 'package:tryout/TryOut/beliTO/PilihBeliTryOut.dart';
 import 'package:tryout/HOME/daftarTO.dart';
 
 class tryoutPage extends StatefulWidget {
