@@ -1,6 +1,5 @@
-// ignore_for_file: file_names, prefer_const_constructors
+// ignore_for_file: file_names, prefer_const_constructors, non_constant_identifier_names
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tryout/TryOut/beliTO/3UploadPembayaran.dart';
 import 'package:tryout/api/DatabaseServices.dart';
@@ -41,9 +40,6 @@ class KonfirmasiBeliTO extends StatefulWidget {
 class _KonfirmasiBeliTOState extends State<KonfirmasiBeliTO> {
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    CollectionReference userdata = firestore.collection('user');
 
     final ButtonStyle ButtonLebar = ElevatedButton.styleFrom(
       onPrimary: Colors.white,

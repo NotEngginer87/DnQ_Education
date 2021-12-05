@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, camel_case_types
+// ignore_for_file: file_names, prefer_const_constructors, camel_case_types, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:tryout/TryOut/ujian.dart';

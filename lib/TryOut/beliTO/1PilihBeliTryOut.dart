@@ -77,7 +77,6 @@ class _BeliTryOutState extends State<BeliTryOut> {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference tryoutdata = firestore.collection('TryOut');
 
-    CollectionReference userdata = firestore.collection('user');
 
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;

@@ -74,6 +74,7 @@ class _Tab3State extends State<Tab3> {
                           ],
                         ),
 
+                        // ignore: deprecated_member_use
                         FlatButton(
                             textColor: Color(0xFF9A9483),
                             onPressed: () {
