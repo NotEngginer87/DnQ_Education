@@ -1,6 +1,6 @@
 # tryout
 
-A new Flutter project.
+Platform Edukasi Terbesar ni Boss, senggol dong...
 
 ## Getting Started
 
