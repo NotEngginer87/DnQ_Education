@@ -18,18 +18,18 @@ class BeliTryOut extends StatefulWidget {
 
 class _BeliTryOutState extends State<BeliTryOut> {
   Widget buildTOCard(
-    int id,
-    String? jenis,
-    String? kode,
-    String? linkgambar,
-    String? namaTO,
-    String? keteranganTO,
-    int timeTanggal,
-    int timeBulan,
-    int timeTahun,
-    String docname,
-    emaila,
-  ) =>
+      int id,
+      String? jenis,
+      String? kode,
+      String? linkgambar,
+      String? namaTO,
+      String? keteranganTO,
+      int timeTanggal,
+      int timeBulan,
+      int timeTahun,
+      String docname,
+      emaila,
+      ) =>
       Card(
           elevation: 4,
           clipBehavior: Clip.antiAlias,
@@ -49,17 +49,18 @@ class _BeliTryOutState extends State<BeliTryOut> {
                     child: InkWell(onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => KonfirmasiBeliTO(
-                              id,
-                              jenis!,
-                              kode!,
-                              linkgambar,
-                              namaTO!,
-                              keteranganTO!,
-                              timeTanggal,
-                              timeBulan,
-                              timeTahun,
-                              docname,
-                          emaila,)));
+                            id,
+                            jenis!,
+                            kode!,
+                            linkgambar,
+                            namaTO!,
+                            keteranganTO!,
+                            timeTanggal,
+                            timeBulan,
+                            timeTahun,
+                            docname,
+                            emaila,
+                          )));
                     }),
                   ),
                   Text(
@@ -76,7 +77,6 @@ class _BeliTryOutState extends State<BeliTryOut> {
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference tryoutdata = firestore.collection('TryOut');
-
 
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
@@ -109,7 +109,7 @@ class _BeliTryOutState extends State<BeliTryOut> {
                         activeColor: Colors.black,
                         iconSize: 24,
                         padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                         duration: Duration(milliseconds: 400),
                         tabBackgroundColor: Colors.grey[100]!,
                         color: Colors.black,
@@ -148,96 +148,96 @@ class _BeliTryOutState extends State<BeliTryOut> {
               Center(
                 child: (_selectedIndex == 0)
                     ? StreamBuilder<QuerySnapshot>(
-                        stream: tryoutdata.snapshots(),
-                        builder: (_, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return Column(
-                                children: snapshot.data.docs
-                                    .map<Widget>((e) =>
-                                        ((e.data()['time_tahun'] * 12 +
-                                                    e.data()['time_bulan'] *
-                                                        30 +
-                                                    e.data()['time_tanggal']) >=
-                                                DateTime.now().year * 12 +
-                                                    DateTime.now().month * 30 +
-                                                    DateTime.now().day)
-                                            ? buildTOCard(
-                                                e.data()['id'],
-                                                e.data()['jenis'],
-                                                e.data()['kode'],
-                                                e.data()['linkgambar'],
-                                                e.data()['namaTO'],
-                                                e.data()['keteranganTO'],
-                                                e.data()['time_tanggal'],
-                                                e.data()['time_bulan'],
-                                                e.data()['time_tahun'],
-                                                e.data()['docname'],
-                                                emaila,
-                                              )
-                                            : Container())
-                                    .toList());
-                          } else {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
-                                Center(
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                ),
-                              ],
-                            );
-                          }
-                        },
-                      )
-                    : (_selectedIndex == 1)
-                        ? StreamBuilder<QuerySnapshot>(
-                            stream: tryoutdata.snapshots(),
-                            builder: (_, AsyncSnapshot snapshot) {
-                              if (snapshot.hasData) {
-                                return Column(
-                                    children: snapshot.data.docs
-                                        .map<Widget>((e) => ((e.data()[
-                                                            'time_tahun'] *
-                                                        12 +
-                                                    e.data()['time_bulan'] *
-                                                        30 +
-                                                    e.data()['time_tanggal']) <=
-                                                DateTime.now().year * 12 +
-                                                    DateTime.now().month * 30 +
-                                                    DateTime.now().day)
-                                            ? buildTOCard(
-                                                e.data()['id'],
-                                                e.data()['jenis'],
-                                                e.data()['kode'],
-                                                e.data()['linkgambar'],
-                                                e.data()['namaTO'],
-                                                e.data()['keteranganTO'],
-                                                e.data()['time_tanggal'],
-                                                e.data()['time_bulan'],
-                                                e.data()['time_tahun'],
-                                                e.data()['docname'],
-                                                emaila,
-                                              )
-                                            : Container())
-                                        .toList());
-                              } else {
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: const [
-                                    Center(
-                                      child: Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              }
-                            },
+                  stream: tryoutdata.snapshots(),
+                  builder: (_, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Column(
+                          children: snapshot.data.docs
+                              .map<Widget>((e) =>
+                          ((e.data()['time_tahun'] * 12 +
+                              e.data()['time_bulan'] *
+                                  30 +
+                              e.data()['time_tanggal']) >=
+                              DateTime.now().year * 12 +
+                                  DateTime.now().month * 30 +
+                                  DateTime.now().day)
+                              ? buildTOCard(
+                            e.data()['id'],
+                            e.data()['jenis'],
+                            e.data()['kode'],
+                            e.data()['linkgambar'],
+                            e.data()['namaTO'],
+                            e.data()['keteranganTO'],
+                            e.data()['time_tanggal'],
+                            e.data()['time_bulan'],
+                            e.data()['time_tahun'],
+                            e.data()['docname'],
+                            emaila,
                           )
-                        : Container(),
+                              : Container())
+                              .toList());
+                    } else {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Center(
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                  },
+                )
+                    : (_selectedIndex == 1)
+                    ? StreamBuilder<QuerySnapshot>(
+                  stream: tryoutdata.snapshots(),
+                  builder: (_, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      return Column(
+                          children: snapshot.data.docs
+                              .map<Widget>((e) => ((e.data()[
+                          'time_tahun'] *
+                              12 +
+                              e.data()['time_bulan'] *
+                                  30 +
+                              e.data()['time_tanggal']) <=
+                              DateTime.now().year * 12 +
+                                  DateTime.now().month * 30 +
+                                  DateTime.now().day)
+                              ? buildTOCard(
+                            e.data()['id'],
+                            e.data()['jenis'],
+                            e.data()['kode'],
+                            e.data()['linkgambar'],
+                            e.data()['namaTO'],
+                            e.data()['keteranganTO'],
+                            e.data()['time_tanggal'],
+                            e.data()['time_bulan'],
+                            e.data()['time_tahun'],
+                            e.data()['docname'],
+                            emaila,
+                          )
+                              : Container())
+                              .toList());
+                    } else {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Center(
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                  },
+                )
+                    : Container(),
               ),
             ],
           ),

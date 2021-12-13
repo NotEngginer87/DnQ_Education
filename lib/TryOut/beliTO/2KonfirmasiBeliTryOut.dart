@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:tryout/TryOut/beliTO/3UploadPembayaran.dart';
-import 'package:tryout/api/DatabaseServices.dart';
 
 // ignore: must_be_immutable
 class KonfirmasiBeliTO extends StatefulWidget {
@@ -95,8 +94,7 @@ class _KonfirmasiBeliTOState extends State<KonfirmasiBeliTO> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    DatabaseServices.updatepembelianTO(widget.emaila.toString(),
-                        widget.namaTO, widget.jenis, widget.id);
+
                     Navigator.push(
                         context,
                         MaterialPageRoute(

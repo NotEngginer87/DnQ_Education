@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:tryout/TryOut/beliTO/1PilihBeliTryOut.dart';
 import 'package:tryout/TryOut/beliTO/0daftarTO.dart';
 
+import 'TO_Aktif/pilihTOaktif.dart';
+
 class tryoutPage extends StatefulWidget {
   const tryoutPage({Key? key}) : super(key: key);
 
@@ -28,7 +30,10 @@ class _tryoutPageState extends State<tryoutPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: () {}, child: Text('TO Aktif')),
+                  ElevatedButton(onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PilihTOAktif()));
+                  }, child: Text('TO Aktif')),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(

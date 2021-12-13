@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tryout/TryOut/SubUjian.dart';
+import 'package:tryout/TryOut/TO_Aktif/SubUjian.dart';
 
 class daftarTO extends StatefulWidget {
   const daftarTO({Key? key}) : super(key: key);

@@ -17,7 +17,7 @@ class _PilihSubSetUjianState extends State<PilihSubSetUjian> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('ganteng'),
+        title: Text('Pilih Subset Ujian'),
       ),
       body: Center(
         child: Padding(

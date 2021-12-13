@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,7 +47,6 @@ class UploadPembayaran extends StatefulWidget {
 }
 
 class _UploadPembayaranState extends State<UploadPembayaran> {
-
   late String MetodePembayaran;
   String? PicTFBANK;
   String? PicGopay;
@@ -199,451 +199,541 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                       });
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Center(
-                      child: ((_valMetodepembayaran == 'FREE'))
-                          ? Column(
-                              children: [
-                                Text('Kalau free, ikuti instruksi berikut : '),
-                                SizedBox(
-                                  height: 24,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      child: Text(
-                                          'Upload Bukti Follow instagram @DnQEducation : '),
-                                    ),
-                                    SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            UploadBuktiFree1();
-                                            switchfotofree1 = true;
-                                            MetodePembayaran = 'FREE';
-                                          },
-                                          child: Text('Upload'),
-                                          style: ButtonLebar,
-                                        ))
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      child: Text(
-                                          'Upload Bukti Screenshoot like dan komen postingan TO : '),
-                                    ),
-                                    SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            UploadBuktiFree2();
-                                            switchfotofree2 = true;
-                                            MetodePembayaran = 'FREE';
-                                          },
-                                          child: Text('Upload'),
-                                          style: ButtonLebar,
-                                        ))
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      child: Text(
-                                          'Upload Bukti Follow instagram @DnQEducation : '),
-                                    ),
-                                    SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.3,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            UploadBuktiFree3();
-                                            switchfotofree3 = true;
-                                            MetodePembayaran = 'FREE';
-                                          },
-                                          child: Text('Upload'),
-                                          style: ButtonLebar,
-                                        ))
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Column(
-                                      children: <Widget>[
-                                        (PicFree1 != null)
-                                            ? Card(
-                                          elevation: 4,
-                                          clipBehavior: Clip.antiAlias,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(16),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  Ink.image(
-                                                    image: NetworkImage(
-                                                        PicFree1!),
-                                                    height: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    width: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                            : Container()
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        (PicFree2 != null)
-                                            ? Card(
-                                          elevation: 4,
-                                          clipBehavior: Clip.antiAlias,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(16),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  Ink.image(
-                                                    image: NetworkImage(
-                                                        PicFree2!),
-                                                    height: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    width: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                            : Container()
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        (PicFree3 != null)
-                                            ? Card(
-                                          elevation: 4,
-                                          clipBehavior: Clip.antiAlias,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                            BorderRadius.circular(16),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  Ink.image(
-                                                    image: NetworkImage(
-                                                        PicFree3!),
-                                                    height: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    width: MediaQuery.of(
-                                                        context)
-                                                        .size
-                                                        .width / 4,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                            : Container()
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          : (_valMetodepembayaran == 'GOPAY')
-                              ? Column(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(24, 12, 24, 12),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                              'Transfer gopaymu ke nomer berikut : '),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: const [
-                                              SizedBox(
-                                                child:
-                                                    Text('Gopay atas nama : '),
-                                              ),
-                                              SizedBox(child: Text('Daffa')),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: const [
-                                              SizedBox(
-                                                child: Text('Nomor Telepon : '),
-                                              ),
-                                              SizedBox(
-                                                  child: Text('08080808080')),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 24,
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(24, 12, 24, 12),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.5,
-                                            child: Text(
-                                                'Upload Bukti Pembayaran Gopaymu '),
-                                          ),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.3,
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  UploadBuktiGopay();
-                                                  switchfotogopay = true;
-                                                  MetodePembayaran = 'GOPAY';
-                                                },
-                                                child: Text('Upload'),
-                                                style: ButtonLebar,
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        (PicGopay != null)
-                                            ? Card(
-                                                elevation: 4,
-                                                clipBehavior: Clip.antiAlias,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(16),
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    Stack(
-                                                      children: [
-                                                        Ink.image(
-                                                          image: NetworkImage(
-                                                              PicGopay!),
-                                                          height: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width,
-                                                          width: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
-                                            : Container()
-                                      ],
-                                    ),
-                                  ],
-                                )
-                              : (_valMetodepembayaran == 'TFBANK')
+                  StreamBuilder<DocumentSnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('AkunPembayaran')
+                          .doc('1')
+                          .snapshots(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<DocumentSnapshot> snapshot) {
+                        if (snapshot.hasData) {
+                          String TFBANKnama;
+                          String TFBANKrekening;
+                          String TFBANKnamabank;
+                          String gopaynama;
+                          String gopaynomor;
+                          TFBANKnama = snapshot.data!['TFBANKnama'];
+                          TFBANKrekening = snapshot.data!['TFBANKrekening'];
+                          TFBANKnamabank = snapshot.data!['TFBANKnamabank'];
+                          gopaynama = snapshot.data!['gopaynama'];
+                          gopaynomor = snapshot.data!['gopaynomor'];
+                          return Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Center(
+                              child: ((_valMetodepembayaran == 'FREE'))
                                   ? Column(
                                       children: [
-                                        Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              24, 12, 24, 12),
-                                          child: Column(
-                                            children: [
-                                              Text('Transfer ke rekening  : '),
-                                              SizedBox(
-                                                height: 8,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: const [
-                                                  SizedBox(
-                                                    child: Text(
-                                                        'Rekening atas nama : '),
-                                                  ),
-                                                  SizedBox(
-                                                      child: Text('Daffa')),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 8,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: const [
-                                                  SizedBox(
-                                                    child: Text(
-                                                        'Nomor Rekening : '),
-                                                  ),
-                                                  SizedBox(
-                                                      child:
-                                                          Text('1234567890')),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                                        Text(
+                                            'Kalau free, ikuti instruksi berikut : '),
                                         SizedBox(
                                           height: 24,
                                         ),
-                                        Padding(
-                                          padding: EdgeInsets.fromLTRB(
-                                              24, 12, 24, 12),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              SizedBox(
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.5,
+                                              child: Text(
+                                                  'Upload Bukti Follow instagram @DnQEducation : '),
+                                            ),
+                                            SizedBox(
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.5,
-                                                child: Text(
-                                                    'Upload Bukti Transfermu '),
-                                              ),
-                                              SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.3,
-                                                  child: ElevatedButton(
-                                                    onPressed: () {
-                                                      UploadBuktiTransfer();
-                                                      switchfototfbank = true;
-                                                      MetodePembayaran =
-                                                          'TFBANK';
-                                                    },
-                                                    child: Text('Upload'),
-                                                    style: ButtonLebar,
-                                                  )),
-                                            ],
-                                          ),
+                                                    0.3,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    UploadBuktiFree1();
+                                                    switchfotofree1 = true;
+                                                    MetodePembayaran = 'FREE';
+                                                  },
+                                                  child: Text('Upload'),
+                                                  style: ButtonLebar,
+                                                ))
+                                          ],
                                         ),
-                                        Column(
-                                          children: <Widget>[
-                                            (PicTFBANK != null)
-                                                ? Card(
-                                                    elevation: 4,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              16),
-                                                    ),
-                                                    child: Column(
-                                                      children: [
-                                                        Stack(
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.5,
+                                              child: Text(
+                                                  'Upload Bukti Screenshoot like dan komen postingan TO : '),
+                                            ),
+                                            SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    UploadBuktiFree2();
+                                                    switchfotofree2 = true;
+                                                    MetodePembayaran = 'FREE';
+                                                  },
+                                                  child: Text('Upload'),
+                                                  style: ButtonLebar,
+                                                ))
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.5,
+                                              child: Text(
+                                                  'Upload Bukti Follow instagram @DnQEducation : '),
+                                            ),
+                                            SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3,
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    UploadBuktiFree3();
+                                                    switchfotofree3 = true;
+                                                    MetodePembayaran = 'FREE';
+                                                  },
+                                                  child: Text('Upload'),
+                                                  style: ButtonLebar,
+                                                ))
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 16,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Column(
+                                              children: <Widget>[
+                                                (PicFree1 != null)
+                                                    ? Card(
+                                                        elevation: 4,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
+                                                        ),
+                                                        child: Column(
                                                           children: [
-                                                            Ink.image(
-                                                              image: NetworkImage(
-                                                                  PicTFBANK!),
-                                                              height:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              width:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              fit: BoxFit.cover,
+                                                            Stack(
+                                                              children: [
+                                                                Ink.image(
+                                                                  image: NetworkImage(
+                                                                      PicFree1!),
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ],
                                                             ),
                                                           ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                : Container()
+                                                      )
+                                                    : Container()
+                                              ],
+                                            ),
+                                            Column(
+                                              children: <Widget>[
+                                                (PicFree2 != null)
+                                                    ? Card(
+                                                        elevation: 4,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Stack(
+                                                              children: [
+                                                                Ink.image(
+                                                                  image: NetworkImage(
+                                                                      PicFree2!),
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Container()
+                                              ],
+                                            ),
+                                            Column(
+                                              children: <Widget>[
+                                                (PicFree3 != null)
+                                                    ? Card(
+                                                        elevation: 4,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Stack(
+                                                              children: [
+                                                                Ink.image(
+                                                                  image: NetworkImage(
+                                                                      PicFree3!),
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width /
+                                                                      4,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Container()
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       ],
                                     )
-                                  : Container(),
-                    ),
-                  ),
+                                  : (_valMetodepembayaran == 'GOPAY')
+                                      ? Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  24, 12, 24, 12),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                      'Transfer gopaymu ke nomer berikut : '),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      SizedBox(
+                                                        child: Text(
+                                                            'Gopay atas nama : '),
+                                                      ),
+                                                      SizedBox(
+                                                          child:
+                                                              Text(gopaynama)),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      SizedBox(
+                                                        child: Text(
+                                                            'Nomor Telepon : '),
+                                                      ),
+                                                      SizedBox(
+                                                          child:
+                                                              Text(gopaynomor)),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 24,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  24, 12, 24, 12),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                    child: Text(
+                                                        'Upload Bukti Pembayaran Gopaymu '),
+                                                  ),
+                                                  SizedBox(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.3,
+                                                      child: ElevatedButton(
+                                                        onPressed: () {
+                                                          UploadBuktiGopay();
+                                                          switchfotogopay =
+                                                              true;
+                                                          MetodePembayaran =
+                                                              'GOPAY';
+                                                        },
+                                                        child: Text('Upload'),
+                                                        style: ButtonLebar,
+                                                      ))
+                                                ],
+                                              ),
+                                            ),
+                                            Column(
+                                              children: <Widget>[
+                                                (PicGopay != null)
+                                                    ? Card(
+                                                        elevation: 4,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
+                                                        ),
+                                                        child: Column(
+                                                          children: [
+                                                            Stack(
+                                                              children: [
+                                                                Ink.image(
+                                                                  image: NetworkImage(
+                                                                      PicGopay!),
+                                                                  height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                                  width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Container()
+                                              ],
+                                            ),
+                                          ],
+                                        )
+                                      : (_valMetodepembayaran == 'TFBANK')
+                                          ? Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      24, 12, 24, 12),
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          'Transfer ke rekening  : '),
+                                                      SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          SizedBox(
+                                                            child: Text(
+                                                                'Rekening atas nama : '),
+                                                          ),
+                                                          SizedBox(
+                                                              child: Text(
+                                                                  TFBANKnama)),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          SizedBox(
+                                                            child: Text(
+                                                                'Nomor BANK : '),
+                                                          ),
+                                                          SizedBox(
+                                                              child: Text(
+                                                                  TFBANKnamabank)),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height: 8,
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          SizedBox(
+                                                            child: Text(
+                                                                'Nomor Rekening : '),
+                                                          ),
+                                                          SizedBox(
+                                                              child: Text(
+                                                                  TFBANKrekening)),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 24,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      24, 12, 24, 12),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.5,
+                                                        child: Text(
+                                                            'Upload Bukti Transfermu '),
+                                                      ),
+                                                      SizedBox(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.3,
+                                                          child: ElevatedButton(
+                                                            onPressed: () {
+                                                              UploadBuktiTransfer();
+                                                              switchfototfbank =
+                                                                  true;
+                                                              MetodePembayaran =
+                                                                  'TFBANK';
+                                                            },
+                                                            child:
+                                                                Text('Upload'),
+                                                            style: ButtonLebar,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Column(
+                                                  children: <Widget>[
+                                                    (PicTFBANK != null)
+                                                        ? Card(
+                                                            elevation: 4,
+                                                            clipBehavior:
+                                                                Clip.antiAlias,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          16),
+                                                            ),
+                                                            child: Column(
+                                                              children: [
+                                                                Stack(
+                                                                  children: [
+                                                                    Ink.image(
+                                                                      image: NetworkImage(
+                                                                          PicTFBANK!),
+                                                                      height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width,
+                                                                      width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          )
+                                                        : Container()
+                                                  ],
+                                                ),
+                                              ],
+                                            )
+                                          : Container(),
+                            ),
+                          );
+                        }
+                        //this will load first
+                        return CircularProgressIndicator();
+                      }),
                 ],
               ),
             ],
@@ -661,17 +751,20 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => TungguVerifikasiAdmin(
-                                widget.id,
-                                widget.jenis,
-                                widget.kode,
-                                widget.linkgambar,
-                                widget.namaTO,
-                                widget.keteranganTO,
-                                widget.timeTanggal,
-                                widget.timeBulan,
-                                widget.timeTahun,
-                                widget.docname,
-                                widget.emaila,)));
+                                    widget.id,
+                                    widget.jenis,
+                                    widget.kode,
+                                    widget.linkgambar,
+                                    widget.namaTO,
+                                    widget.keteranganTO,
+                                    widget.timeTanggal,
+                                    widget.timeBulan,
+                                    widget.timeTahun,
+                                    widget.docname,
+                                    widget.emaila,
+                                  )));
+                          DatabaseServices.updatepembelianTO(widget.emaila.toString(),
+                              widget.namaTO, widget.jenis, widget.id);
                           DatabaseServices.updatepembelianTO2TFBANK(
                             widget.emaila,
                             widget.id,
@@ -687,17 +780,20 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => TungguVerifikasiAdmin(
-                                    widget.id,
-                                    widget.jenis,
-                                    widget.kode,
-                                    widget.linkgambar,
-                                    widget.namaTO,
-                                    widget.keteranganTO,
-                                    widget.timeTanggal,
-                                    widget.timeBulan,
-                                    widget.timeTahun,
-                                    widget.docname,
-                                    widget.emaila,)));
+                                        widget.id,
+                                        widget.jenis,
+                                        widget.kode,
+                                        widget.linkgambar,
+                                        widget.namaTO,
+                                        widget.keteranganTO,
+                                        widget.timeTanggal,
+                                        widget.timeBulan,
+                                        widget.timeTahun,
+                                        widget.docname,
+                                        widget.emaila,
+                                      )));
+                              DatabaseServices.updatepembelianTO(widget.emaila.toString(),
+                                  widget.namaTO, widget.jenis, widget.id);
                               DatabaseServices.updatepembelianTO2TFGOPAY(
                                 widget.emaila,
                                 widget.id,
@@ -712,18 +808,22 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                             ? ElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => TungguVerifikasiAdmin(
-                                        widget.id,
-                                        widget.jenis,
-                                        widget.kode,
-                                        widget.linkgambar,
-                                        widget.namaTO,
-                                        widget.keteranganTO,
-                                        widget.timeTanggal,
-                                        widget.timeBulan,
-                                        widget.timeTahun,
-                                        widget.docname,
-                                        widget.emaila,)));
+                                      builder: (context) =>
+                                          TungguVerifikasiAdmin(
+                                            widget.id,
+                                            widget.jenis,
+                                            widget.kode,
+                                            widget.linkgambar,
+                                            widget.namaTO,
+                                            widget.keteranganTO,
+                                            widget.timeTanggal,
+                                            widget.timeBulan,
+                                            widget.timeTahun,
+                                            widget.docname,
+                                            widget.emaila,
+                                          )));
+                                  DatabaseServices.updatepembelianTO(widget.emaila.toString(),
+                                      widget.namaTO, widget.jenis, widget.id);
                                   DatabaseServices.updatepembelianTO2FREE(
                                     widget.emaila,
                                     widget.id,
@@ -732,7 +832,6 @@ class _UploadPembayaranState extends State<UploadPembayaran> {
                                     PicFree2!,
                                     PicFree3!,
                                   );
-
                                 },
                                 child: Text('Konfirmasi pembayaran'),
                                 style: ButtonKonfirmasiPembayaran,

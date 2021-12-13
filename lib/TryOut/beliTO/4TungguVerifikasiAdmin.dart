@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../main.dart';
 
 // ignore: must_be_immutable
 class TungguVerifikasiAdmin extends StatefulWidget {
